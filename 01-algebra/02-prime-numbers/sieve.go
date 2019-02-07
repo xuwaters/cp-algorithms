@@ -6,12 +6,18 @@ import (
 
 // CountPrimesBySieve count prime numbers <= n
 func CountPrimesBySieve(n int) int {
+	if n < 2 {
+		return 0
+	}
 	// prepare small primes
 	nsqrt := int(math.Sqrt(float64(n)))
 	primes := GeneratePrimes(nsqrt)
 	// Sieve by blocks
 	cnt := 0
-	BS := nsqrt // block size
+	BS := nsqrt + 1 // block size
+	if BS < 2 {
+		BS = 2
+	}
 	isPrime := make([]bool, BS)
 
 	resetIsPrime := func() {

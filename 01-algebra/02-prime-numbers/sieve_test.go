@@ -12,6 +12,8 @@ func TestCountPrimesBySieve(t *testing.T) {
 		n   int
 		cnt int
 	}{
+		{n: 0, cnt: 0},
+		{n: 1, cnt: 0},
 		{n: 10, cnt: 4},
 		{n: 100, cnt: 25},
 		{n: 10000, cnt: 1229},
