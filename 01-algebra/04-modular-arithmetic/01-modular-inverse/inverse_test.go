@@ -13,7 +13,11 @@ func TestInverse(t *testing.T) {
 		t.Logf("inverse of %d: %+v", p, inv)
 		for i := 1; i < len(inv); i++ {
 			if inv[i]*i%p != 1 {
-				t.Fatalf("inverse of %d (mod %d) invalid: %+v", i, p, inv[i])
+				t.Fatalf("CalcInverse of %d (mod %d) invalid: %+v", i, p, inv[i])
+			}
+			ii := ModInverse(i, p)
+			if ii*i%p != 1 {
+				t.Fatalf("ModInverse of %d (mod %d) invalid: %+v", i, p, ii)
 			}
 		}
 	}

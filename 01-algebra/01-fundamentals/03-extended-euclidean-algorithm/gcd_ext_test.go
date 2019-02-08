@@ -19,8 +19,24 @@ func TestGreatestCommonDivisorExt(t *testing.T) {
 		{g: 1, a: 832040, b: 514229},
 	}
 
+	t.Logf(">> Testing GreatestCommonDivisorExt")
 	for _, data := range dataList {
 		g, x, y := GreatestCommonDivisorExt(data.a, data.b)
+		if g != data.g {
+			t.Fatalf("ERR: got = %+v, data = %+v", g, data)
+		} else {
+			t.Logf(" OK: got = %+v, data = %+v", g, data)
+		}
+		if x*data.a+y*data.b != g {
+			t.Fatalf("ERR: x = %v, y = %v, data = %v", x, y, data)
+		} else {
+			t.Logf(" OK: x = %v, y = %v, data = %v", x, y, data)
+		}
+	}
+	
+	t.Logf(">> Testing GreatestCommonDivisorExtLoop")
+	for _, data := range dataList {
+		g, x, y := GreatestCommonDivisorExtLoop(data.a, data.b)
 		if g != data.g {
 			t.Fatalf("ERR: got = %+v, data = %+v", g, data)
 		} else {
