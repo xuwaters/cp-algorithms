@@ -55,10 +55,7 @@ func (g *WeightedGraph) ShortestPaths(s int) []PathEntry {
 		Priority: dist[s].Distance,
 	})
 
-	for i := 0; i < n; i++ {
-		if pq.Len() == 0 {
-			break
-		}
+	for i := 0; i < n && pq.Len() > 0; i++ {
 		item := pq.Dequeue()
 		v := item.Key
 		visited[v] = true
@@ -67,6 +64,7 @@ func (g *WeightedGraph) ShortestPaths(s int) []PathEntry {
 			if dist[to].Distance < 0 || currDist < dist[to].Distance {
 				dist[to].Distance = currDist
 				dist[to].Parent = v
+				// here Enqueue is: update or enqueue
 				pq.Enqueue(QueueItem{
 					Key:      dist[to].ID,
 					Priority: dist[to].Distance,
