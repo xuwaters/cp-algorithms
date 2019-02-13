@@ -62,7 +62,7 @@ func TestPrim(t *testing.T) {
 		mst := g.Prim()
 		w := MSTWeight(mst)
 		if w != data.weight {
-			t.Logf("ERR: weight = %d, mst = %+v, data = %+v", w, mst, data)
+			t.Fatalf("ERR: weight = %d, mst = %+v, data = %+v", w, mst, data)
 		} else {
 			t.Logf(" OK: weight = %d, mst = %+v, data = %+v", w, mst, data)
 		}
