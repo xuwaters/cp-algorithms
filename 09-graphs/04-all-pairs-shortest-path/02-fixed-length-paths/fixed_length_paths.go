@@ -78,7 +78,7 @@ func matCopy(dst, src [][]int) [][]int {
 func matPrint(m [][]int) string {
 	lines := []string{}
 	for r := 0; r < len(m); r++ {
-		lines = append(lines, fmt.Sprintf(" %2d: %+2v", r, m[r]))
+		lines = append(lines, fmt.Sprintf(" %2d: %+3v", r, m[r]))
 	}
 	return strings.Join(lines, "\n")
 }
